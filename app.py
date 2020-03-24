@@ -129,7 +129,8 @@ class Movies_List(Resource):
     
 class All_Movies(Resource):
     def get(self):
-        return {'Movies': list(map(lambda x: x.json(), Movies.query.all()))}
+         r = requests.post(url=API_ENDPOINT, json=data, headers=hed)
+        return str(r.content)
     
 api.add_resource(All_Movies, '/')
 api.add_resource(Movies_List, '/<string:movie>')
