@@ -29,5 +29,3 @@ class Movies(db.Model):
         db.session.delete(self)
         db.session.commit()
         
-    
-
