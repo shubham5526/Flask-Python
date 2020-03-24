@@ -97,10 +97,8 @@ class Movies_List(Resource):
     parser.add_argument('collection', type=int, required=True, help='Gross collection of the movie')
     
     def get(self, movie):
-        item = Movies.find_by_title(movie)
-        if item:
-            return item.json()
-        return {'Message': 'Movie is not found'}
+        r = requests.post(url=API_ENDPOINT, json=data, headers=hed)
+        return str(r.content)
     
     def post(self, movie):
         if Movies.find_by_title(movie):
